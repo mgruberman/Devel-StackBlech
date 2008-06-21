@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Devel-StackBlech
-version:             0.02
+version:             0.03
 abstract:            Dumps your stack, all of it, somewhere
 license:             ~
 author:              

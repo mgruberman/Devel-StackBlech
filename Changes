@@ -2,7 +2,11 @@ Revision history for Devel-StackBlech
 
 0.01
   - 
-0.02 Say Jun 21, 2008
+
+0.02 Sat Jun 21, 2008
   - exports dumpStack as a C function
   - exports dumpStack as a Perl function
   - depends on itself
+
+0.03 Sat Jun 21, 2008
+  - Removing ppport.h like ppport.h suggests
