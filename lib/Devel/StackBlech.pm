@@ -13,11 +13,13 @@ Version 0.01
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
-use XSLoader ();
-XSLoader::load( __PACKAGE__, $VERSION );
+require DynaLoader;
+our @ISA = 'DynaLoader';
+DynaLoader::bootstrap( __PACKAGE__ );
 
+sub dl_load_flags { 0x01 }
 
 use Sub::Exporter -setup => { exports => [qw[ dumpStack ]] };
 
