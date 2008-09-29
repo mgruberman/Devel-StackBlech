@@ -5,8 +5,7 @@
 /*
  * Dump a context.
  */
-void
-dumpFrame( const PERL_CONTEXT *const cx )
+void dsb_dumpFrame( const PERL_CONTEXT *const cx )
 {
   switch(CxTYPE(cx)) {
   case CXt_SUB:
@@ -27,7 +26,10 @@ dumpFrame( const PERL_CONTEXT *const cx )
     break;
   case CXt_GIVEN:
   case CXt_WHEN:
-    PerlIO_printf(Perl_debug_log,"WHEN next_op=0x%x\n", (I32)((*cx).cx_u.cx_blk.blk_u.blku_givwhen.leave_op));
+#ifdef USE_THREADS
+#elsif
+    PerlIO_printf(Perl_debug_log,"WHEN leave_op=0x%x\n", (I32)((*cx).cx_u.cx_blk.blk_u.blku_givwhen.leave_op));
+#endif
     break;
   }
 }
@@ -35,27 +37,28 @@ dumpFrame( const PERL_CONTEXT *const cx )
 /*
  * Dump all contexts in this runloop level.
  */
-void
-dumpFrames( PERL_SI *si ) {
+void dsb_dumpFrames( PERL_SI *si ) {
   PERL_CONTEXT *cx = si->si_cxstack;
   I32 i;
   
   for (i = si->si_cxix; i >= 0; --i ) {
-    dumpFrame( &cx[i] );
+    dsb_dumpFrame( &cx[i] );
   }
 }
 
 
 /*
  * Dump all levels of the interpreter's runloop stacks.
+ *
+ * This is the backend, reuseable implementation for the perl function C<dumpStacks()>.
  */
-void dumpStacks()
+void dsb_dumpStacks()
 {
   PERL_SI *si;
   
   for ( si = PL_curstackinfo; si; si = si->si_prev ) {
     PerlIO_printf(Perl_debug_log,"PERL_SI=0x%0x\n", si);
-    dumpFrames( si );
+    dsb_dumpFrames( si );
   }
 }
 
@@ -70,7 +73,7 @@ PROTOTYPES: DISABLE
 void
 StackBlech_dumpStacks()
   CODE:
-    dumpStacks(); 
+    dsb_dumpStacks(); 
 
 
 ## Local Variables:

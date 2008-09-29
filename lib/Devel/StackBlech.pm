@@ -7,15 +7,11 @@ use strict;
 
 Devel::StackBlech - Dumps your stack, all of it, somewhere
 
-=head1 VERSION
-
-Version 0.01
-
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
-require DynaLoader;
+use DynaLoader ();
 our @ISA = 'DynaLoader';
 DynaLoader::bootstrap( __PACKAGE__ );
 
@@ -27,12 +23,13 @@ use Sub::Exporter -setup => { exports => [qw[ dumpStack ]] };
 
 
 
-
 =head1 FUNCTIONS
+
+=head2 PERL FUNCTIONS
 
 =over
 
-=item stackBlech()
+=item dumpStacks()
 
 Dumps your stack to C<Perl_debug_log> which is usually pointed at
 STDERR. Happens to also display DB::sub calls which are normally
@@ -43,6 +40,31 @@ are handed out freely.
 
 
 
+
+
+
+=head2 C FUNCTIONS
+
+All of the following C functions are available for importing.
+
+=over
+
+=item void dsb_dumpStacks()
+
+Dump all levels of the interpreter's runloop stacks.
+
+This is the backend, reuseable implementation for the perl function
+C<dumpStacks()>.
+
+=item void dsb_dumpFrames( PERL_SI *si )
+
+Dump all contexts in this runloop level.
+
+=item void dsb_dumpFrame( const PERL_CONTEXT *const cx )
+
+Dump a context.
+
+=back
 
 
 
