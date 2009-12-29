@@ -18,3 +18,8 @@ Revision history for Devel-StackBlech
     but that never existed.
   - Devel::StackBlech is no longer dependant on having
     Devel::StackBlech 4294967295.0 pre-installed.
+
+0.05 Tue Dec 29, 2009
+  - Buildable on threaded perl
+  - Tested
+  - Aliased dumpStack to dumpStacks

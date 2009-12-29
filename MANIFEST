@@ -1,9 +1,13 @@
+build/IFiles.pm
 Changes
 lib/Devel/StackBlech.pm
+lib/Devel/StackBlech.pod
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
+MANIFEST.SKIP
 ppport.h
 README
+StackBlech.h
 StackBlech.xs
-t/00-load.t
-META.yml                                 Module meta-data (added by MakeMaker)
+t/blech.pl
+t/blech.t
