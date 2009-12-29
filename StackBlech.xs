@@ -57,18 +57,20 @@ void dsb_dumpStacks()
   PERL_SI *si;
   
   for ( si = PL_curstackinfo; si; si = si->si_prev ) {
-    PerlIO_printf(Perl_debug_log,"PERL_SI=0x%0x\n", si);
+    PerlIO_printf(PerlIO_stdout(),"PERL_SI=0x%0x\n", (int)si);
     dsb_dumpFrames( si );
   }
 }
 
 
-
-
-
 MODULE = Devel::StackBlech  PACKAGE = Devel::StackBlech	PREFIX = StackBlech_
 
 PROTOTYPES: DISABLE
+
+void
+StackBlech_dumpStack()
+  CODE:
+    dsb_dumpStacks();
 
 void
 StackBlech_dumpStacks()
