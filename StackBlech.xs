@@ -2,6 +2,8 @@
 #include "perl.h"
 #include "XSUB.h"
 
+#include "StackBlech.h"
+
 /*
  * Dump a context.
  */
