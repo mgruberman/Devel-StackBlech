@@ -6,6 +6,6 @@
 ^Makefile$
 ^Makefile\.old$
 ^MANIFEST\.bak$
-^StackBleck\.bc$
+^StackBlech\.bs$
 ^StackBlech\.c$
 ^StackBlech\.o$
