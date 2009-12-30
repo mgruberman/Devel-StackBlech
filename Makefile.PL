@@ -1,7 +1,6 @@
-#!perl
-use 5.007_003; # at least
+#!perl -w
+use 5.005;
 use strict;
-use warnings;
 use ExtUtils::MakeMaker;
 
 my $ExtUtils_Depends_required = 0.302; #minimum version that works on Win32+gcc
@@ -38,7 +37,7 @@ WriteMakefile(
     ABSTRACT_FROM       => 'lib/Devel/StackBlech.pod',
     AUTHOR              => 'Josh ben Jore <jjore@cpan.org>',
     LICENSE             => 'perl',
-    MIN_PERL_VERSION => 5.007_003,
+    MIN_PERL_VERSION => 5.005,
     META_MERGE => {
 	resources => {
             repository => 'http://github.com/jbenjore/Devel-StackBlech/tree',
