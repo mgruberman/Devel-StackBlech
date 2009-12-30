@@ -7,7 +7,7 @@ use Sub::Exporter -setup => { exports => [qw[ dumpStacks dumpStack ]] };
 
 sub dl_load_flags { 0x01 }
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 our @ISA = 'DynaLoader';
 DynaLoader::bootstrap( __PACKAGE__ );
