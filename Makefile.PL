@@ -40,7 +40,7 @@ WriteMakefile(
     MIN_PERL_VERSION => 5.005,
     META_MERGE => {
 	resources => {
-            repository => 'http://github.com/jbenjore/Devel-StackBlech/tree',
+            repository => 'http://github.com/jbenjore/Devel-StackBlech',
 	},
 	keywords => ['perl internals','stack'],
     },
